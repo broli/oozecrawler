@@ -6,30 +6,48 @@
 [![Language](https://img.shields.io/badge/GDScript-2.0-blue)](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+> [!NOTE]
+> **Learning by Doing Project:**  
+> This is a hands-on learning project to explore game development in Godot 4 and GDScript from scratch.  
+> The core infinite physics loop is currently under active development. **All design systems, classes, and roguelite progression features described below are concepts in development and marked as TBD.**
+
 ---
 
-## 🎮 Game Concept
+### 📌 GitHub Pinned Card Blurb
+```text
+A learn-by-doing Godot 4 project combining Suika-style physics puzzle mechanics with dungeon crawler roguelite elements.
+```
 
-Drop, squeeze, and merge bouncy slimes inside alchemical flasks and vials! Combine identical slimes to evolve them into colossal oozes.
+---
 
-- **Infinite Normal Mode:** Classic high-score physics puzzle. Manage your container, trigger cascade merges, and beat your high scores without overflowing.
-- **Dungeon Crawl Roguelite Mode:** Battle dungeon creatures where each merge powers up your attacks. Outsmart enemy attack timers, conquer bosses, and earn perk XP.
-- **Hero Classes:**
-  - 🪓 **Barbarian:** Hurl slimes with devastating impact and shake the flask.
-  - 🧙 **Wizard:** Manipulate slime physics with arcane magnetism and transmutations.
-  - 🗡️ **Rogue:** Lubricate drops to slip and squeeze through microscopic gaps.
-- **Meta Progression:** Interconnected skill trees where achievements and gameplay in one mode unlock game-changing perks for the other.
-- **Cross-Platform Ready:** Architecture prepared for Steam and Mobile achievements.
+## 🎮 Concept & Planned Features (TBD)
+
+The core idea is to drop, squeeze, and merge bouncy slimes inside alchemical flasks and vials to power dungeon progression.
+
+- **Infinite Normal Mode (In Progress):**
+  - Classic high-score physics puzzle.
+  - Drop slimes, manage container volume, and trigger cascade merges without overflowing.
+- **Dungeon Crawl Mode (TBD):**
+  - Turn-based RPG monster encounters powered by physics merges.
+  - Merging higher-tier slimes deals damage; enemies counter-attack on move counters.
+- **Hero Classes & Abilities (TBD):**
+  - 🪓 **Barbarian:** Throw slimes with downward impact force; shake container.
+  - 🧙 **Wizard:** Arcane slime magnetism to attract matching tiers.
+  - 🗡️ **Rogue:** Lubricated slimes that compress through narrow gaps.
+- **Container Variations (TBD):**
+  - Different flask geometries (conical, test tubes, round-bottom bowls, obstacles).
+- **Meta Progression & Achievements (TBD):**
+  - Cross-mode unlockable perks and achievement system ready for future platform integrations.
 
 ---
 
 ## 🛠️ Engine & Tech Stack
 
 - **Engine:** Godot Engine 4.x
-- **Scripting:** GDScript 2.0 (Pythonic syntax with static typing)
-- **View:** 2D Side Static View (physics container with flanking UI panels)
-- **Rendering:** GL Compatibility (ultra-fast, cross-platform and web friendly)
-- **Physics:** Godot 2D Physics Engine (`RigidBody2D`, dynamic restitution and dampening)
+- **Language:** GDScript 2.0 (statically typed)
+- **View:** 2D Side Static View
+- **Renderer:** GL Compatibility
+- **Physics:** Godot 2D Physics Engine (`RigidBody2D`, restitution, friction, and dampening)
 
 ---
 
@@ -40,15 +58,15 @@ Drop, squeeze, and merge bouncy slimes inside alchemical flasks and vials! Combi
 - [Godot Engine 4.x](https://godotengine.org/download) (Standard edition)
 - [Git](https://git-scm.com/)
 
-### Running the Project
+### Running Locally
 
-1. Clone the repo:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/oozecrawler.git
+   git clone https://github.com/broli/oozecrawler.git
    cd oozecrawler
    ```
 2. Open **Godot Engine 4**, click **Import**, select `project.godot`, and click **Import & Edit**.
-3. Press **F5** (or click the Play button in the top right) to run.
+3. Press **F5** (or **F6** on `scenes/Core/main.tscn`) to run the game loop.
 
 ---
 
@@ -56,27 +74,28 @@ Drop, squeeze, and merge bouncy slimes inside alchemical flasks and vials! Combi
 
 ```text
 oozecrawler/
-├── assets/                # Audio, vector sprites, fonts, particles
-├── docs/                  # Design specs & tutoring guides
+├── assets/                # Textures, audio, icons, prototyping graphics
+├── docs/                  # Design documents & learning roadmaps
 │   ├── GDD.md             # Game Design Document
+│   ├── IDEAS.md           # Gameplay backlog & class abilities
 │   └── CURRICULUM.md      # Godot 4 & GDScript learning syllabus
 ├── scenes/                # Scene tree components (.tscn)
-│   ├── core/              # Game container, drop line, spawner
-│   ├── slimes/            # RigidBody2D slime tier scenes
-│   └── ui/                # HUD, next queue, tier evolution chart
-├── scripts/               # GDScript logic (.gd)
-│   ├── autoload/          # AchievementManager, GameManager, SoundManager
-│   ├── core/              # Spawner, container, merge logic
-│   └── slimes/            # Slime base class & tier data
+│   ├── Core/              # Container, Dropper, Main scene
+│   └── slimes/            # RigidBody2D slime tier scenes
+├── scripts/               # GDScript source code (.gd)
+│   ├── characters/        # Dropper controller
+│   ├── core/              # Main game loop & queue manager
+│   └── Slimes/            # Slime base logic & tier definitions
 └── project.godot          # Engine configuration
 ```
 
 ---
 
-## 📜 Documentation
+## 📚 Documentation
 
 - [Game Design Document (GDD)](docs/GDD.md)
-- [Learning Syllabus & Tutoring Curriculum](docs/CURRICULUM.md)
+- [Feature & Mechanics Backlog](docs/IDEAS.md)
+- [Tutoring Curriculum](docs/CURRICULUM.md)
 
 ---
 
