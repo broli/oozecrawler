@@ -1,0 +1,40 @@
+extends Node2D
+
+# Reference to child Dropper node
+@onready var dropper: Node2D = $Dropper
+
+var drop_queue: Array[int] = []
+const QUEUE_SIZE: int = 5 # Keep a buffer of 5 upcoming slimes
+
+func _ready() -> void:
+	# Seed the queue initially
+	for i in range(QUEUE_SIZE):
+		drop_queue.append(get_random_drop_tier())
+	
+	# Give the dropper its first slime
+	prepare_next_drop()
+	
+func get_random_drop_tier() -> int:
+	# Suika weights: mostly Tier 1 & 2, rare Tier 3
+	var roll := randf()
+	if roll < 0.65:
+		return 1
+	elif roll < 0.90:
+		return 2
+	elif roll < 0.98:
+		return 3
+	else:
+		return 4
+		
+		
+func prepare_next_drop() -> void:
+	# Pop the next tier for the dropper
+	var current_tier: int = drop_queue.pop_front()
+	
+	# Replenish queue at the back
+	drop_queue.append(get_random_drop_tier())
+	
+	# Tell dropper what tier to hold
+	dropper.set_current_slime_tier(current_tier)
+	
+	print("Current drop: ", current_tier, " | Upcoming: ", drop_queue)

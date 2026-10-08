@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdc6jep74utom"]
+
+[ext_resource type="Script" uid="uid://cirsduep8fwp" path="res://scripts/core/main.gd" id="1_g00m7"]
+[ext_resource type="Texture2D" uid="uid://bcausjm1dkf6l" path="res://assets/sprites/prototiping/Brick-Texture.svg" id="1_ue2wo"]
+[ext_resource type="PackedScene" uid="uid://ovlqf2paxyyg" path="res://scenes/Core/container.tscn" id="1_x0yl7"]
+[ext_resource type="PackedScene" uid="uid://cpio4edsf1pe1" path="res://scenes/Core/dropper.tscn" id="2_x0yl7"]
+
+[node name="Main" type="Node2D" unique_id=1972363362]
+script = ExtResource("1_g00m7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137903800]
+modulate = Color(0.21568628, 0.21568628, 0.21568628, 0.5058824)
+scale = Vector2(1.312, 1)
+texture = ExtResource("1_ue2wo")
+centered = false
+
+[node name="Container" parent="." unique_id=303102109 instance=ExtResource("1_x0yl7")]
+
+[node name="Dropper" parent="." unique_id=1659214463 instance=ExtResource("2_x0yl7")]
+position = Vector2(652, -2)
