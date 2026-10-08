@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ctrnctwpdt5r6"]
+
+[ext_resource type="Script" uid="uid://bfx8115wfwwxr" path="res://scripts/Slimes/slime.gd" id="1_22mvs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ktxv1"]
+friction = 0.15
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktxv1"]
+radius = 20.0
+
+[node name="Slime" type="RigidBody2D" unique_id=1177499602]
+physics_material_override = SubResource("PhysicsMaterial_ktxv1")
+gravity_scale = 1.5
+contact_monitor = true
+max_contacts_reported = 4
+linear_damp_mode = 1
+linear_damp = 3.0
+angular_damp = 0.3
+script = ExtResource("1_22mvs")
+pop_intensity_min = -50.0
+pop_intensity_max = 50.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741467764]
+shape = SubResource("CircleShape2D_ktxv1")
