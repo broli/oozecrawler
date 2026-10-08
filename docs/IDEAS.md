@@ -56,3 +56,17 @@ This document collects gameplay ideas, class traits, utility skills, and procedu
     - **Mystery Events:** Alchemical experiments, gamble slimes for relics, risk-reward dialogue.
     - **Alchemist Shop:** Purchase consumable cards, passive relics, and flask upgrades using run currency.
     - **Rest Site:** Brew potions, upgrade class skills.
+
+---
+
+## 5. Flask / Vial Geometry Variations (Class Perks & Crawl Modifiers)
+
+* **Alternative Container Shapes:**
+  - **Erlenmeyer (Conical) Flask:** Narrow neck opening, broad stable base (easier early merges, tight top).
+  - **Test Tube:** Tall, narrow vertical column (punishing stacking, requires high precision).
+  - **Round-Bottom Flask:** Curved circular bowl causing slimes to roll toward center point.
+  - **Funnel / Hourglass:** Two chambers connected by a restrictive choke point.
+  - **Internal Obstacles / Pachinko Pegs:** Fixed central pins that split and redirect falling slimes.
+* **Unlock & Usage:**
+  - Class-specific starter containers (e.g., Alchemist uses conical, Barbarian uses wide cauldron).
+  - Dungeon room modifiers / curses in Crawl mode.
