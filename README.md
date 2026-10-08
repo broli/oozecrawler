@@ -51,25 +51,6 @@ The core idea is to drop, squeeze, and merge bouncy slimes inside alchemical fla
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [Godot Engine 4.x](https://godotengine.org/download) (Standard edition)
-- [Git](https://git-scm.com/)
-
-### Running Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/broli/oozecrawler.git
-   cd oozecrawler
-   ```
-2. Open **Godot Engine 4**, click **Import**, select `project.godot`, and click **Import & Edit**.
-3. Press **F5** (or **F6** on `scenes/Core/main.tscn`) to run the game loop.
-
----
-
 ## 📁 Repository Structure
 
 ```text
