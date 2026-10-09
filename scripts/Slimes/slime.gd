@@ -35,14 +35,25 @@ const TIER_DATA: Dictionary = {
 	11: {"radius": 130.0, "color": Color(1.0, 0.84, 0.0, 0.9), "score": 10240, "mass": 32.0},
 }
 
+# Static drawing helper callable from outside. not instance related, but class static
+static func draw_visual(canvas: CanvasItem, center: Vector2, target_tier: int) -> void:
+	if not TIER_DATA.has(target_tier):
+		return
+	
+	var data: Dictionary = TIER_DATA[target_tier]
+	var radius: float = data["radius"]
+	var color: Color = data["color"]
+	
+	# Draw body centered on param vector, with tier data
+	canvas.draw_circle(center, radius, color)
+	
+	# Draw eye / details
+	var eye_offset := center + Vector2(radius * 0.35, -radius * 0.2)
+	canvas.draw_circle(eye_offset, radius * 0.2, Color(1, 1, 1, 0.9))
+	canvas.draw_circle(eye_offset, radius * 0.1, Color(0, 0, 0, 0.9))
+
 func _draw() -> void:
-	if TIER_DATA.has(tier):
-		var radious = TIER_DATA[tier]["radius"]
-		var color = TIER_DATA[tier]["color"]
-		draw_circle(Vector2.ZERO,radious,color)
-		var eye_poss := Vector2(radious * 0.35, -radious * 0.2 )
-		draw_circle(eye_poss,radious * 0.2, Color(1,1,1,1))
-		draw_circle(eye_poss,radious * 0.1,Color(0.0, 0.0, 0.0, 1.0))
+	Slime.draw_visual(self, Vector2.ZERO, tier)
 	
 func _ready() -> void:
 	apply_tier_properties()
