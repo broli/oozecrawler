@@ -3,66 +3,38 @@ extends Node2D
 # References to child nodes
 @onready var dropper: Node2D = $Dropper
 @onready var queue_display: Control = $HUD/NextSlimePanel/QueueDisplay
+@onready var score_value_label: Label = $HUD/ScorePanel/ScoreValueLabel
+@onready var container: GameContainer = $Container
 
-#var drop_queue: Array[int] = []
-#const QUEUE_SIZE: int = 5 # Keep a buffer of 5 upcoming slimes
-
-var bingo_cage: Array[int]
+var score:= 0
+var queue_manager : QueueManager
 
 func _ready() -> void:
-	# Seed the queue initially
-	#for i in range(QUEUE_SIZE):
-		#drop_queue.append(get_random_drop_tier())
-	#load first bingo cage
-	load_bingo_cage()
+	# Dynamically read beaker boundaries from its collision shapes
+	var bounds: Vector2 = container.get_drop_bounds()
+	dropper.min_x = bounds.x
+	dropper.max_x = bounds.y
+	
+	# Set dropper height right above the flask opening
+	dropper.global_position.y = container.get_opening_y() - 150.0
+	
+	queue_manager = QueueManager.new()
 		
 	# Give the dropper its first slime
-	send_slime_to_dropper()
+	dropper.set_current_slime_tier(self.queue_manager.get_next())
+	queue_display.update_queue([queue_manager.peek(0), queue_manager.peek(1), queue_manager.peek(2), queue_manager.peek(3)] as Array[int])
+
 	
 	#listen for slime drop
 	dropper.slime_dropped.connect(send_slime_to_dropper)
-
-func load_bingo_cage() -> void:
-	bingo_cage = [1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,4,4,5]
-	bingo_cage.shuffle()
-
-func pull_next_ball() -> int:
-	if bingo_cage.is_empty():
-		load_bingo_cage()
 	
-	#pull
-	var next_ball = bingo_cage.pop_back()
-	#update hud
-	queue_display.update_queue(bingo_cage)
-	#return
-	return next_ball
+	#listen for merge event
+	Events.slime_merged.connect(_on_slime_merged)
 	
-		
+func _on_slime_merged(_tier: int, earned_score: int) -> void:
+	score += earned_score
+	score_value_label.text = str(score)
+	
 func send_slime_to_dropper() -> void:
-	dropper.set_current_slime_tier(self.pull_next_ball())
-
-#func get_random_drop_tier() -> int:
-	## Suika weights: mostly Tier 1 & 2, rare Tier 3
-	#var roll := randf()
-	#if roll < 0.65:
-		#return 1
-	#elif roll < 0.90:
-		#return 2
-	#elif roll < 0.98:
-		#return 3
-	#else:
-		#return 4
-		
-#func prepare_next_drop() -> void:
-	## Pop the next tier for the dropper
-	#var current_tier: int = drop_queue.pop_front()
-	#
-	## Replenish queue at the back
-	#drop_queue.append(get_random_drop_tier())
-	#
-	## Tell dropper what tier to hold
-	#dropper.set_current_slime_tier(current_tier)
-	
-	#update HUD
-	#queue_display.update_queue(bingo_cage)
-	#print("Current drop: ", current_tier, " | Upcoming: ", drop_queue)
+	dropper.set_current_slime_tier(self.queue_manager.get_next())
+	queue_display.update_queue([queue_manager.peek(0), queue_manager.peek(1), queue_manager.peek(2), queue_manager.peek(3)] as Array[int])
