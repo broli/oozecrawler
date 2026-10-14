@@ -20,3 +20,4 @@ texture = ExtResource("2_lfe3p")
 material = SubResource("ShaderMaterial_ktxv1")
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
