@@ -1,8 +1,5 @@
 extends Node2D
 
-#signals up
-signal slime_dropped
-
 #Preloads ?
 const SLIME_SCENE = preload("res://scenes/slimes/slime.tscn")
 
@@ -28,7 +25,7 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	#aim lines have to be dashed gorsh dan it
-	draw_dashed_line(Vector2.ZERO,Vector2(0,540),aimguide_color, 2.0, dash_lenght)
+	draw_dashed_line(Vector2.ZERO, Vector2(0, 540), aimguide_color, 2.0, dash_lenght)
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -44,7 +41,7 @@ func drop_slime() -> void:
 	slime.global_position = global_position
 	
 	get_parent().add_child(slime)
-	slime_dropped.emit()
+	Events.slime_dropped.emit(current_slime_tier)
 	
 	await get_tree().create_timer(drop_cooldown).timeout
 	can_drop = true
