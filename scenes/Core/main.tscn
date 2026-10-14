@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ovlqf2paxyyg" path="res://scenes/Core/container.tscn" id="1_x0yl7"]
 [ext_resource type="PackedScene" uid="uid://cpio4edsf1pe1" path="res://scenes/Core/dropper.tscn" id="2_x0yl7"]
 [ext_resource type="PackedScene" uid="uid://dtj6ojv0r2r45" path="res://scenes/Core/dungeon_background.tscn" id="3_5uyvx"]
-[ext_resource type="Script" uid="uid://c4tyydimprwns" path="res://scripts/old/queue_display.gd" id="5_ddvu7"]
+[ext_resource type="Script" uid="uid://c4tyydimprwns" path="res://scripts/core/queue_display.gd" id="5_ddvu7"]
 [ext_resource type="Shader" uid="uid://qikhvu7oy3m1" path="res://Shaders/slime.gdshader" id="6_fojeq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5uyvx"]
