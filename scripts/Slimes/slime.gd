@@ -2,9 +2,6 @@ extends RigidBody2D
 
 class_name Slime
 
-#dont have a clue where to put this
-signal merged (tier_created: int, score_earned: int)
-
 #tier handling
 @export var tier: int = 1
 #blocks multi merging
@@ -52,8 +49,8 @@ static func draw_visual(canvas: CanvasItem, center: Vector2, target_tier: int) -
 	canvas.draw_circle(eye_offset, radius * 0.2, Color(1, 1, 1, 0.9))
 	canvas.draw_circle(eye_offset, radius * 0.1, Color(0, 0, 0, 0.9))
 
-func _draw() -> void:
-	Slime.draw_visual(self, Vector2.ZERO, tier)
+#func _draw() -> void:
+	#Slime.draw_visual(self, Vector2.ZERO, tier)
 	
 func _ready() -> void:
 	apply_tier_properties()
@@ -66,8 +63,11 @@ func apply_tier_properties() -> void:
 	if not TIER_DATA.has(tier):
 		return
 	
+	#handle for current tier data
 	var data: Dictionary = TIER_DATA[tier]
 	
+	Slime.setup_visual($ColorRect,tier,Vector2.ZERO)
+		
 	# Update collision radius
 	var col_shape := $CollisionShape2D.shape as CircleShape2D
 	if col_shape:
@@ -129,6 +129,9 @@ func _merge_with(other: Slime) -> void:
 			) * self.mass
 		)#closing vector2
 	
+	#score and signaling merge
+	var score: int = TIER_DATA[new_slime.tier]["score"]
+	Events.slime_merged.emit(new_slime.tier,score)
 	
 	# Add to scene
 	get_parent().add_child(new_slime)
@@ -137,3 +140,21 @@ func _merge_with(other: Slime) -> void:
 	# Remove old slimes
 	other.queue_free()
 	queue_free()
+
+static func setup_visual(rect: ColorRect, target_tier: int, center: Vector2 = Vector2.ZERO) -> void:
+	if not TIER_DATA.has(target_tier):
+		return
+		
+	var radius: float = TIER_DATA[target_tier]["radius"]
+	var diameter: float = radius * 2.0
+	
+	# 1. Size and center the rect around the center point
+	rect.size = Vector2(diameter, diameter)
+	rect.position = center - Vector2(radius, radius)
+	
+	# 2. Update shader color
+	var mat := rect.material as ShaderMaterial
+	if mat:
+		mat = mat.duplicate() # Creates a private copy for THIS specific rect
+		rect.material = mat
+		mat.set_shader_parameter("base_color", TIER_DATA[target_tier]["color"])
