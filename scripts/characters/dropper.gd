@@ -30,8 +30,6 @@ func _draw() -> void:
 	#aim lines have to be dashed gorsh dan it
 	draw_dashed_line(Vector2.ZERO,Vector2(0,540),aimguide_color, 2.0, dash_lenght)
 	
-	#we need to show the current slime under the hat
-	Slime.draw_visual(self,Vector2(0.0,60.0),current_slime_tier)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
@@ -53,4 +51,8 @@ func drop_slime() -> void:
 
 func set_current_slime_tier(new_tier: int) -> void:
 	current_slime_tier = new_tier
+	if not Slime.TIER_DATA.has(new_tier):
+		return
+	Slime.setup_visual($PreviewSlime, current_slime_tier, Vector2(0.0, 60.0))
+	
 	queue_redraw()
