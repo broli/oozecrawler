@@ -27,15 +27,17 @@ func _ready() -> void:
 
 	
 	#listen for slime drop
-	Events.slime_dropped.connect(send_slime_to_dropper)
+	Events.slime_dropped.connect(_on_slime_dropped)
 	
 	#listen for merge event
 	Events.slime_merged.connect(_on_slime_merged)
 	
-func _on_slime_merged(_tier: int, earned_score: int) -> void:
+func _on_slime_merged(tier: int, earned_score: int) -> void:
 	level_stats.add_score(earned_score)
+	level_stats.add_merge(tier)
 	score_value_label.text = str(level_stats.score)
 	
-func send_slime_to_dropper(_tier: int) -> void:
+func _on_slime_dropped(_tier: int) -> void:
+	level_stats.add_slime_dropped()
 	dropper.set_current_slime_tier(self.queue_manager.get_next())
 	queue_display.update_queue([queue_manager.peek(0), queue_manager.peek(1), queue_manager.peek(2), queue_manager.peek(3)] as Array[int])
