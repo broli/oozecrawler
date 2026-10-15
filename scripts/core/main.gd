@@ -6,7 +6,7 @@ extends Node2D
 @onready var score_value_label: Label = $HUD/ScorePanel/ScoreValueLabel
 @onready var container: GameContainer = $Container
 
-var score := 0
+var level_stats: LevelStats
 var queue_manager: QueueManager
 
 func _ready() -> void:
@@ -19,6 +19,7 @@ func _ready() -> void:
 	dropper.global_position.y = container.get_opening_y() - 150.0
 	
 	queue_manager = QueueManager.new()
+	level_stats = LevelStats.new()
 		
 	# Give the dropper its first slime
 	dropper.set_current_slime_tier(self.queue_manager.get_next())
@@ -32,8 +33,8 @@ func _ready() -> void:
 	Events.slime_merged.connect(_on_slime_merged)
 	
 func _on_slime_merged(_tier: int, earned_score: int) -> void:
-	score += earned_score
-	score_value_label.text = str(score)
+	level_stats.add_score(earned_score)
+	score_value_label.text = str(level_stats.score)
 	
 func send_slime_to_dropper(_tier: int) -> void:
 	dropper.set_current_slime_tier(self.queue_manager.get_next())
