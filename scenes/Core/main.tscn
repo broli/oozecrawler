@@ -103,3 +103,6 @@ offset_bottom = 88.0
 text = "0"
 label_settings = SubResource("LabelSettings_bwyuc")
 horizontal_alignment = 1
+
+[node name="MergeAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=825674580]
+max_polyphony = 4

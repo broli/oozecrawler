@@ -5,7 +5,7 @@ extends Node2D
 @onready var queue_display: Control = $HUD/NextSlimePanel/QueueDisplay
 @onready var score_value_label: Label = $HUD/ScorePanel/ScoreValueLabel
 @onready var container: GameContainer = $Container
-@onready var merge_audio_player: AudioStreamPlayer2D = $MergeAudioPlayer
+@onready var merge_audio_player: AudioStreamPlayer = $MergeAudioPlayer
 
 # Load audio files
 var first_half_tier_merge_sound = preload("res://assets/audio/firsthalftiermerge.wav")
@@ -16,7 +16,7 @@ var queue_manager: QueueManager
 
 func _ready() -> void:
 	# Dynamically read beaker boundaries from its collision shapes
-	var bounds: Vector2 = container.get_drop_bounds()
+	var bounds: Vector2 = container.get_drop_bounds(0.0)
 	dropper.min_x = bounds.x
 	dropper.max_x = bounds.y
 	
@@ -41,6 +41,14 @@ func _on_slime_merged(tier: int, earned_score: int) -> void:
 	level_stats.add_score(earned_score)
 	level_stats.add_merge(tier)
 	score_value_label.text = str(level_stats.score)
+	
+	if tier < 6:
+		merge_audio_player.stream = first_half_tier_merge_sound
+		merge_audio_player.pitch_scale = 0.9 + (tier * 0.05)
+	else:
+		merge_audio_player.stream = second_half_tier_merge_sound
+		merge_audio_player.pitch_scale = 0.9 + ((tier - 5) * 0.05)
+	merge_audio_player.play()
 	
 func _on_slime_dropped(_tier: int) -> void:
 	level_stats.add_slime_dropped()

@@ -6,12 +6,12 @@ class_name GameContainer
 @onready var floor_shape: CollisionShape2D = $Floor
 
 # Glass styling colors
-const COLOR_GLASS_TINT = Color(0.4, 0.75, 1.0, 0.12)    # Subtle translucent cyan/blue
-const COLOR_GLASS_SHINE = Color(1.0, 1.0, 1.0, 0.25)   # White specular reflection
-const COLOR_TICK_MARKS = Color(0.9, 0.95, 1.0, 0.5)    # Measurement graduation marks
+const COLOR_GLASS_TINT = Color(0.4, 0.75, 1.0, 0.12) # Subtle translucent cyan/blue
+const COLOR_GLASS_SHINE = Color(1.0, 1.0, 1.0, 0.25) # White specular reflection
+const COLOR_TICK_MARKS = Color(0.9, 0.95, 1.0, 0.5) # Measurement graduation marks
 
 # Returns Vector2(min_x, max_x) for dropper clamping
-func get_drop_bounds(margin: float = 30.0) -> Vector2:
+func get_drop_bounds(margin: float) -> Vector2:
 	var left_rect := left_wall.shape as RectangleShape2D
 	var right_rect := right_wall.shape as RectangleShape2D
 	
