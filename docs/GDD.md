@@ -27,11 +27,16 @@
 ### B. Dungeon Crawl Roguelite Mode
 - **Rules:** Stage-by-stage dungeon run against enemies (e.g., Goblins, Skeletons, Alchemists, Dungeon Mimics).
 - **Turn Loop:**
-  - Dropping & merging slimes generates attack power/action points.
-  - Higher-tier merges unleash elemental effects or critical strikes.
-  - The enemy has an action counter (e.g., attacks every $N$ drops/turns).
-  - Enemy attacks might disrupt your container (shake the vial, drop sludge/toxic obstacle slimes, or seal space).
-- **Run Progression:** Defeating bosses unlocks relic choices, XP to spend in the class tree, and rare alchemical flask blueprints.
+  - **Player Phase:** Player spends Action Points (AP) to drop slimes.
+  - **Stance Toggle:** Players toggle between `[Attack Stance]` (merges bank damage) and `[Defense Stance]` (merges bank shield).
+  - **Damage Engine:** `Damage = ((Base + Flat) * ChainMult) * CritMult`.
+  - **Settling Phase:** Input locks briefly while physics bodies come to rest.
+  - **Enemy Phase:** Enemy executes its telegraphed action from its deterministic `action_loop` (HP attack or board hazard).
+  - **Turn Reset:** AP and temporary shield refresh.
+- **Run Progression:** 
+  - Standard 5-node route for MVP: `Normal Enemy` ➔ `Event` ➔ `Shop` ➔ `Mid-Boss` ➔ `Boss`.
+  - Full board reset and gold payout between encounters.
+
 
 ---
 

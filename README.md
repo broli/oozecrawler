@@ -60,46 +60,42 @@ The foundational mechanics of the physics puzzle loop, procedural art, event arc
 
 ---
 
-## 🗺️ Roadmap & Future Features
+## 🗺️ Roadmap & Release Milestones
 
-Development is structured in phases, moving from the standalone physics core to the full roguelite dungeon crawler:
+Development is structured around a playable **Launch MVP (v0.1 Beta)** followed by iterative major content updates (the *Rogue Adventure* live-ops model):
 
-### Phase 1: Core Loop Polish & Juicing (Current Focus)
-- [ ] **Overflow & Game Over System:** Danger warning line with a 2–3 second overflow countdown timer.
-- [ ] **Audio & SFX:**
-  - [x] Merge pop effect with dynamic tier pitch scaling
-  - [ ] Slime squish / landing audio
-  - [ ] Slime bounce sound
-  - [ ] Flask glass wall impact audio
-- [ ] **Visual Juice:** Squash-and-stretch deformation, merge particle bursts, and floating score numbers.
-- [ ] **Game State Controller:** Pause menu, restart loop, and high-score persistence.
+### Phase 1: Launch MVP — Version 0.1 Beta (Current Focus)
+- [ ] **Dual Loss Conditions:** Overflow danger line with 2–3s countdown timer + Player HP tracking.
+- [ ] **Turn-Based Combat Bridge:** AP economy (drops/turn), Attack/Defense Stance toggle (Damage Bank vs. Shield Bank), and physics settling phase.
+- [ ] **Modular Damage Engine:** `Damage = ((Base + Flat) * ChainMult) * CritMult`.
+- [ ] **Scripted Enemy Encounters:** Deterministic `action_loop: Array[int]` with telegraphed intent icons (Normal Enemy, Mid-Boss, Boss).
+- [ ] **5-Node Linear Run:** `Enemy` ➔ `Event` ➔ `Shop` ➔ `Mid-Boss` ➔ `Boss` with post-combat flask resets and gold economy.
+- [ ] **Endless Mode:** Classic large-beaker physics puzzle with local high-score saving (`user://`).
+- [ ] **Corridor Motion & Visual Juice:** Step-forward background animations, turns/forks between rooms, merge party-popper bursts (`CPUParticles2D`), and floating combat numbers.
+- [ ] **Audio & SFX:** Slime squish, bounce, and flask glass impact sound design.
 
-### Phase 2: Hero Classes & Abilities
-- [ ] 🪓 **Barbarian:**
-  - *Force Throw:* Active downward slam impulse on drops.
-  - *Quake Slam:* Shakes container to settle jammed slimes.
-- [ ] 🧙 **Wizard:**
-  - *Slime Magnetism:* Attractive magnetic force between identical adjacent tiers.
-  - *Transmutation:* Arcane spells to shift slime tiers up or down.
-- [ ] 🗡️ **Rogue:**
-  - *Slime Lubrication:* Temporarily compresses collision radius to slip through tight gaps.
-  - *Sneak Drop:* Zero-bounce precision placement.
 
-### Phase 3: Flask & Container Variations
-- [ ] **Erlenmeyer (Conical) Flask:** Wide stable base with a restrictive narrow neck.
-- [ ] **Test Tube:** Tall, narrow vertical column demanding vertical stacking precision.
-- [ ] **Round-Bottom Flask:** Curved circular bowl causing slimes to roll toward center.
-- [ ] **Pachinko / Obstacle Flasks:** Pegs and dividers that split and redirect falling slimes.
+### Phase 2: Major Update 1 — Hero Classes & Skill Loadouts
+- [ ] 🪓 **Barbarian:** *Force Throw* downward launch impulse and *Quake Slam* vial jarring.
+- [ ] 🧙 **Wizard:** *Slime Magnetism* combos and *Transmutation* tier shifts.
+- [ ] 🗡️ **Rogue:** *Slime Lubrication* gap squeezing and *Sneak Drop* precision.
+- [ ] **Endless Loadouts:** Pre-run card/trait selection for Endless Mode.
 
-### Phase 4: Dungeon Crawl Roguelite Mode
-- [ ] **Turn-Based Combat Loop:** Merges generate attack power and elemental triggers to damage dungeon monsters.
-- [ ] **Enemy Intent & Disruption:** Enemies attack on turn counters, disrupting containers with toxic sludge slimes, shakes, or wall constrictions.
-- [ ] **Procedural Map Navigation:** *Slay the Spire*-style node map featuring Combat, Elite Encounters, Mystery Events, Alchemist Shops, and Rest Sites.
-- [ ] **Consumable Cards & Relics:** One-time items (Acid Vial, Centrifuge, Wildcard Slimes) and passive run relics.
+### Phase 3: Major Update 2 — Container Variations & Hazards
+- [ ] **Erlenmeyer (Conical) Flask:** Wide base with restrictive narrow neck.
+- [ ] **Test Tube:** Tall vertical column demanding precision stacking.
+- [ ] **Round-Bottom Flask:** Curved circular bowl rolling slimes toward center.
+- [ ] **Obstacle Flasks:** Pegs and dividers that split and redirect falling slimes.
 
-### Phase 5: Meta-Progression & Platform Support
-- [ ] **Cross-Mode Unlocks:** Run currency to unlock starter flasks, perks, and class abilities.
-- [ ] **Abstracted Achievement System:** `AchievementManager` supporting offline local storage, Steamworks (`GodotSteam`), and mobile achievements.
+### Phase 4: Major Update 3 — Full Dungeon Crawl & Advanced AI
+- [ ] **Procedural Branching Map:** Node navigation with branching paths, elite shrines, and mystery events.
+- [ ] **Advanced Enemy Disruption:** Non-mergeable junk slimes, pegs placed during combat, and frozen slimes.
+- [ ] **Curse Modifiers:** Persistent board malus (flask does not reset between battles).
+- [ ] **Expanded Card & Relic Deck:** Dynamic in-run consumable cards and passive relics.
+
+### Phase 5: Platform Release & Meta-Progression
+- [ ] **Cross-Run Meta Economy:** Unlocks for starter flasks, perks, and class abilities.
+- [ ] **Achievement Architecture:** Decoupled `AchievementManager` supporting offline storage, Steamworks, and mobile platforms.
 
 ---
 

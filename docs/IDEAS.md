@@ -70,3 +70,43 @@ This document collects gameplay ideas, class traits, utility skills, and procedu
 * **Unlock & Usage:**
   - Class-specific starter containers (e.g., Alchemist uses conical, Barbarian uses wide cauldron).
   - Dungeon room modifiers / curses in Crawl mode.
+
+---
+
+## 6. Damage Formula & Card Modifier Synergies
+
+Formula: `Damage = ((Base + Flat) * ChainMult) * CritMult`
+
+* **Flat Value Modifiers:**
+  - *"Slimes count as one tier higher"* (increases base tier value).
+  - *"Each merge gains a flat +X damage bonus"*.
+* **Chain Multiplier Modifiers:**
+  - *"Each chain begins at +1x base multiplier"*.
+  - *"Next chain persists across an extra drop before resetting"*.
+* **Critical Hit Modifiers:**
+  - Drop-based crit roll checks.
+  - Fighter/Barbarian trait: *"Double critical hit chance"*.
+* **Class Attack Cards:**
+  - Ranger: *"Shoot an arrow that destroys 1 selected slime; that slime's tier value is added directly into the next chain"*.
+
+---
+
+## 7. Enemy Disruption Mechanics Backlog
+
+* **Junk / Toxic Slimes:**
+  - Spawns un-mergeable slimes (e.g., solid white or transparent alpha) to waste flask volume.
+* **Internal Peg Placement:**
+  - Enemy inserts unmovable pins/pegs inside the container to divide flow and disrupt combos.
+* **Slime Targeting & Debuffs:**
+  - Target the highest-tier slime on the board and decrement its tier or dissolve it.
+  - *Freeze:* Freezes a slime in place, preventing merging until thawed via a player skill or adjacent heat effect.
+
+---
+
+## 8. Run Modifiers & Meta Progression Backlog
+
+* **Persistent Board Malus (Curse Modifier):**
+  - Advanced difficulty modifier where the flask is NOT reset between fights on the same map, forcing the player to manage long-term clutter.
+* **Endless Mode Loadout Selection:**
+  - As classes, cards, and traits are unlocked through Crawl mode, players can customize a starting loadout for Endless / High Score attempts.
+

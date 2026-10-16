@@ -2,42 +2,72 @@
 
 ---
 
-## 🎯 Phase 1: Core Loop Polish & Juicing (Current Focus)
+## 🎯 Phase 1: Launch MVP — Version 0.1 Beta (Current Focus)
 
-- [ ] **Overflow & Game Over System**
-  - [ ] Add danger warning line near flask opening (with 2–3s countdown)
-  - [ ] Create bottom kill plane (catches slimes that overflow out of the flask)
-  - [ ] Decide overflow penalty: instant death vs. deducting HP / score penalty
-  - [ ] Trigger Game Over state on overflow / HP loss
-- [ ] **Audio & SFX**
-  - [ ] Slime squish / landing audio
-  - [ ] Slime bounce sound
-  - [ ] Merge pop effect
-  - [ ] Flask glass wall impact audio
-- [ ] **Visual Juice & Effects**
-  - [ ] Squash-and-stretch body deformation on collisions
-  - [ ] Particle burst on merge
-  - [ ] Floating combat/score text rising from merged slime
-  - [ ] Random background camera shake / movement (linked to score or HP damage)
-  - [ ] Add background tile details (cracks, moss, skulls, bones, etc.)
-  - [ ] Endless Mode HUD: use boss/encounter space to display merged tier statistics
-- [ ] **Game State & UI Controller**
-  - [ ] Pause menu overlay
-  - [ ] Game Over screen with final score
-  - [ ] Restart button / scene reload loop
-  - [ ] High-score persistence (`ConfigFile` saved to `user://`)
-  - [ ] Main Title Screen with navigation buttons:
-    - [ ] Endless Mode
-    - [ ] Dungeon Crawl
-    - [ ] Statistics
-    - [ ] Bestiary
-    - [ ] Achievements
-    - [ ] Settings
-    - [ ] About
+A self-contained, playable release combining the physics-merge core with a 5-node mini-roguelite run and endless mode.
+
+### 1. Board Core & Loss Conditions
+- [ ] Danger warning line near flask opening (with 2–3s countdown timer)
+- [ ] Bottom kill plane (cleans up overflowed slimes)
+- [ ] Dual fail condition: Flask Overflow OR Player HP reaching 0 triggers Game Over
+
+### 2. Turn Engine & Combat Bridge
+- [ ] **Turn Cycle State Machine:**
+  - `Player Turn` ➔ `Settling Phase` (physics quiescence) ➔ `Enemy Phase` ➔ `Turn Reset`
+- [ ] **Action Point (AP) Economy:**
+  - AP counter (e.g., 3 AP per turn; 1 drop = 1 AP)
+  - "End Turn" button (locks dropper and initiates settling)
+- [ ] **Stance Toggle (Attack / Defend):**
+  - UI toggle button: `[Attack]` vs `[Defend]`
+  - Attack stance: merges accumulate into **Damage Bank**
+  - Defend stance: merges accumulate into **Shield Bank** (absorbs incoming damage, resets each turn)
+- [ ] **Damage Engine:**
+  - Formula: `Damage = ((Base + Flat) * ChainMult) * CritMult`
+  - Base damage scaled by merged slime tier
+  - Chain multiplier increments per cascade merge in the same drop
+  - Critical strike roll check on drop
+
+### 3. Enemy AI & Encounters
+- [ ] **Deterministic Action Loop:**
+  - `action_loop: Array[int]` sequence cycling with modulo indexing
+  - Action dictionary mapping IDs to behaviors (HP Attack, Spawn Junk Slime)
+- [ ] **Telegraphed Intent UI:**
+  - Display icon above enemy indicating next turn's incoming action (Damage value or Hazard)
+- [ ] **MVP Encounter Roster:**
+  - **Normal Enemy:** 2-step loop (Step 1: Attack Player HP; Step 2: Drop 1 White Non-Mergeable Junk Slime)
+  - **Mid-Boss:** Tuned HP pool and higher AP/damage output
+  - **Final Boss:** Climax encounter triggering Run Victory upon defeat
+
+### 4. 5-Node Map Route & Run Flow
+- [ ] Linear node run progression: `Normal Enemy` ➔ `Event` ➔ `Shop` ➔ `Mid-Boss` ➔ `Boss`
+- [ ] **Post-Combat Resolution:** Full flask clean reset + Gold reward payout
+- [ ] **Shop Node:** Simple 3-item inventory (1 HP Healing Potion + 2 Passive Stat / Skill Cards)
+- [ ] **Event Node:** Risk/reward 2-choice decision (Safe modest gain vs. Risky gamble with HP cost)
+- [ ] Victory screen on Boss defeat; Defeat screen with run stats on death
+
+### 5. Endless Mode, Visual Juice & Shell UI
+- [ ] Title Screen with Mode Selection:
+  - *Mini-Roguelite Run* (5-node dungeon crawl)
+  - *Endless Mode* (Standard large beaker, high-score tracking)
+- [ ] High-score persistence saved to `user://`
+- [ ] **Procedural Corridor Background Animation:**
+  - Dynamic stepping motion (step forward, turn corners, and path bifurcations on node transitions)
+  - Tile details (cracks, moss, torchlight flicker)
+- [ ] **Visual Juice & Effects:**
+  - Merge burst / party popper particles (`CPUParticles2D` / `GPUParticles2D`)
+  - Squash-and-stretch body deformation on slime collisions
+  - Floating combat/damage numbers rising on merges
+  - Screen shake linked to critical hits or heavy impacts
+- [ ] **Audio & SFX Polish:**
+  - Slime squish / landing audio
+  - Slime bounce audio
+  - Flask wall glass collision audio
+
 
 ---
 
-## ⚔️ Phase 2: Hero Classes & Abilities
+## ⚔️ Phase 2: Major Update 1 — Hero Classes & Skill Loadouts
+
 
 - [ ] **Barbarian Class**
   - [ ] *Force Throw:* Downward launch impulse instead of passive gravity drop
