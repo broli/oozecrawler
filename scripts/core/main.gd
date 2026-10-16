@@ -5,6 +5,11 @@ extends Node2D
 @onready var queue_display: Control = $HUD/NextSlimePanel/QueueDisplay
 @onready var score_value_label: Label = $HUD/ScorePanel/ScoreValueLabel
 @onready var container: GameContainer = $Container
+@onready var merge_audio_player: AudioStreamPlayer2D = $MergeAudioPlayer
+
+# Load audio files
+var first_half_tier_merge_sound = preload("res://assets/audio/firsthalftiermerge.wav")
+var second_half_tier_merge_sound = preload("res://assets/audio/secondhalftiermerge.wav")
 
 var level_stats: LevelStats
 var queue_manager: QueueManager
