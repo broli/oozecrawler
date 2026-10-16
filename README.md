@@ -6,6 +6,10 @@
 [![Language](https://img.shields.io/badge/GDScript-2.0-blue)](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+<p align="center">
+  <img src="docs/Screenshots/Screenshot_20261016_000821.png" alt="Oozecrawler Gameplay Preview" width="750"/>
+</p>
+
 > [!NOTE]
 > **Learning by Doing Project:**  
 > Oozecrawler is an open-source, hands-on learning project exploring Godot 4, 2D physics, procedural rendering, custom canvas shaders, and clean decoupled game architecture in GDScript.
@@ -21,14 +25,18 @@ A learn-by-doing Godot 4 project combining Suika-style physics puzzle mechanics 
 
 ## 🕹️ Current Project Status
 
-The foundational mechanics of the physics puzzle loop, procedural art, and event architecture are currently implemented and functional:
+The foundational mechanics of the physics puzzle loop, procedural art, event architecture, and audio feedback are currently implemented and functional:
 
 ### ✅ Implemented Features
 
 - **11-Tier Slime Hierarchy & Merge Physics:**
-  - Full progression across 11 tiers (from tiny Tier 1 *Droplet* up to Tier 10 *Royal King Ooze*).
+  - Full progression across 11 tiers (from tiny Tier 1 *Droplet* up to Tier 11 *Golden Royal Ooze*).
   - Scaled physics parameters per tier: radius, mass, elasticity, and score values.
   - Cascade merge collision logic (`_merge_with`) with pop impulses and cleanup.
+- **Dynamic Tier-Scaled Merge Audio (SFX):**
+  - Integrated `AudioStreamPlayer` triggered on merge events via the global `Events` bus.
+  - Dual-sample sound design: acute pops for Tiers 1–5 and heavier tones for Tiers 6–11.
+  - Dynamic procedural pitch scaling (`pitch_scale`) ramping up pitch per tier for an ascending musical crescendo.
 - **Custom Slime Canvas Shader:**
   - Procedural 2D fragment shader (`slime.gdshader`) with radial alpha gradients, stylized dark borders, and responsive directional eyes.
   - Per-instance material duplication dynamically applied across all slime tiers.
@@ -56,9 +64,13 @@ The foundational mechanics of the physics puzzle loop, procedural art, and event
 
 Development is structured in phases, moving from the standalone physics core to the full roguelite dungeon crawler:
 
-### Phase 1: Core Loop Polish & Juicing (Next Up)
+### Phase 1: Core Loop Polish & Juicing (Current Focus)
 - [ ] **Overflow & Game Over System:** Danger warning line with a 2–3 second overflow countdown timer.
-- [ ] **Audio & SFX:** Squish, bounce, merge pop, and flask impact sound effects.
+- [ ] **Audio & SFX:**
+  - [x] Merge pop effect with dynamic tier pitch scaling
+  - [ ] Slime squish / landing audio
+  - [ ] Slime bounce sound
+  - [ ] Flask glass wall impact audio
 - [ ] **Visual Juice:** Squash-and-stretch deformation, merge particle bursts, and floating score numbers.
 - [ ] **Game State Controller:** Pause menu, restart loop, and high-score persistence.
 
@@ -106,7 +118,9 @@ Development is structured in phases, moving from the standalone physics core to 
 ```text
 oozecrawler/
 ├── assets/                # Textures, audio, icons, prototyping graphics
+│   └── audio/             # Wave samples (.wav) and SFXR parameter configs (.json)
 ├── docs/                  # Architecture, GDD, and design roadmaps
+│   ├── Screenshots/       # Gameplay screenshots and visual assets
 │   ├── GDD.md             # Game Design Document
 │   ├── IDEAS.md           # Mechanics backlog & class ability concepts
 │   └── CURRICULUM.md      # Godot 4 & GDScript learning roadmap
@@ -136,3 +150,4 @@ oozecrawler/
 ## 📄 License
 
 Distributed under the [MIT License](LICENSE).
+
