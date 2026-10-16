@@ -7,9 +7,14 @@ extends Node2D
 @onready var container: GameContainer = $Container
 @onready var merge_audio_player: AudioStreamPlayer = $MergeAudioPlayer
 
+
 # Load audio files
 var first_half_tier_merge_sound = preload("res://assets/audio/firsthalftiermerge.wav")
 var second_half_tier_merge_sound = preload("res://assets/audio/secondhalftiermerge.wav")
+
+#preload particles
+var merge_particles_scene: PackedScene = preload("res://scenes/levels/merge_particles.tscn")
+
 
 var level_stats: LevelStats
 var queue_manager: QueueManager
@@ -37,7 +42,7 @@ func _ready() -> void:
 	#listen for merge event
 	Events.slime_merged.connect(_on_slime_merged)
 	
-func _on_slime_merged(tier: int, earned_score: int) -> void:
+func _on_slime_merged(tier: int, earned_score: int, location: Vector2) -> void:
 	level_stats.add_score(earned_score)
 	level_stats.add_merge(tier)
 	score_value_label.text = str(level_stats.score)
@@ -49,6 +54,14 @@ func _on_slime_merged(tier: int, earned_score: int) -> void:
 		merge_audio_player.stream = second_half_tier_merge_sound
 		merge_audio_player.pitch_scale = 0.9 + ((tier - 5) * 0.05)
 	merge_audio_player.play()
+
+	#party poopers! 
+	var merge_particles = merge_particles_scene.instantiate()
+	merge_particles.global_position = location
+	merge_particles.setup_tier(tier)
+	merge_particles.emitting = true
+	add_child(merge_particles)
+
 	
 func _on_slime_dropped(_tier: int) -> void:
 	level_stats.add_slime_dropped()

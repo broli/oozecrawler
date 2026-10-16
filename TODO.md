@@ -54,7 +54,7 @@ A self-contained, playable release combining the physics-merge core with a 5-nod
   - Dynamic stepping motion (step forward, turn corners, and path bifurcations on node transitions)
   - Tile details (cracks, moss, torchlight flicker)
 - [ ] **Visual Juice & Effects:**
-  - Merge burst / party popper particles (`CPUParticles2D` / `GPUParticles2D`)
+  - [x] Merge burst / party popper particles (`CPUParticles2D` / `GPUParticles2D`)
   - Squash-and-stretch body deformation on slime collisions
   - Floating combat/damage numbers rising on merges
   - Screen shake linked to critical hits or heavy impacts

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtj6ojv0r2r45" path="res://scenes/Core/dungeon_background.tscn" id="3_5uyvx"]
 [ext_resource type="Script" uid="uid://c4tyydimprwns" path="res://scripts/core/queue_display.gd" id="5_ddvu7"]
 [ext_resource type="Shader" uid="uid://qikhvu7oy3m1" path="res://Shaders/slime.gdshader" id="6_fojeq"]
+[ext_resource type="PackedScene" uid="uid://ca3i8oa2i7vre" path="res://scenes/levels/merge_particles.tscn" id="8_bwyuc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5uyvx"]
 font_size = 32
@@ -106,3 +107,5 @@ horizontal_alignment = 1
 
 [node name="MergeAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=825674580]
 max_polyphony = 4
+
+[node name="MergeParticles" parent="." unique_id=1156539273 instance=ExtResource("8_bwyuc")]

@@ -5,7 +5,7 @@ class_name Slime
 #tier handling
 @export var tier: int = 1
 #blocks multi merging
-var is_merging:= false
+var is_merging := false
 
 #pop
 @export var xpop_intensity_min := -30.0
@@ -55,7 +55,7 @@ static func draw_visual(canvas: CanvasItem, center: Vector2, target_tier: int) -
 func _ready() -> void:
 	apply_tier_properties()
 	#rng jesus spins
-	self.angular_velocity = randf_range(angular_velocity_min,angular_velocity_max)
+	self.angular_velocity = randf_range(angular_velocity_min, angular_velocity_max)
 	# Connect the collision signal
 	body_entered.connect(_on_body_entered)
 	
@@ -66,7 +66,7 @@ func apply_tier_properties() -> void:
 	#handle for current tier data
 	var data: Dictionary = TIER_DATA[tier]
 	
-	Slime.setup_visual($ColorRect,tier,Vector2.ZERO)
+	Slime.setup_visual($ColorRect, tier, Vector2.ZERO)
 		
 	# Update collision radius
 	var col_shape := $CollisionShape2D.shape as CircleShape2D
@@ -119,19 +119,19 @@ func _merge_with(other: Slime) -> void:
 	new_slime.tier = next_tier
 	new_slime.global_position = spawn_pos
 	var rng_pop := Vector2(
-		randf_range( #x random force. 
+		randf_range( # x random force.
 			xpop_intensity_min,
 			xpop_intensity_max
 			),
-		randf_range( #y random, upwards always force
+		randf_range( # y random, upwards always force
 			ypop_intensity_min,
 			ypop_intensity_max
 			) * self.mass
-		)#closing vector2
+		) # closing vector2
 	
 	#score and signaling merge
 	var score: int = TIER_DATA[new_slime.tier]["score"]
-	Events.slime_merged.emit(new_slime.tier,score)
+	Events.slime_merged.emit(new_slime.tier, score, spawn_pos)
 	
 	# Add to scene
 	get_parent().add_child(new_slime)

@@ -2,7 +2,7 @@ extends Node
 
 #slime events
 @warning_ignore("unused_signal")
-signal slime_merged(tier: int, score: int)
+signal slime_merged(tier: int, score: int, location: Vector2)
 @warning_ignore("unused_signal")
 signal slime_dropped(tier: int)
 
