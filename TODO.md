@@ -7,9 +7,9 @@
 A self-contained, playable release combining the physics-merge core with a 5-node mini-roguelite run and endless mode.
 
 ### 1. Board Core & Loss Conditions
-- [ ] Danger warning line near flask opening (with 2–3s countdown timer)
-- [ ] Bottom kill plane (cleans up overflowed slimes)
-- [ ] Dual fail condition: Flask Overflow OR Player HP reaching 0 triggers Game Over
+- [ ] Bottom kill plane (cleans up overflowed slimes and triggers Game Over)
+- [ ] Fail condition: Flask Overflow (Endless) or Player HP reaching 0 (Dungeon Run)
+- [ ] Study Reimplementing slime drops as a "cascading roll" system.
 
 ### 2. Turn Engine & Combat Bridge
 - [ ] **Turn Cycle State Machine:**

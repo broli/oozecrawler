@@ -40,3 +40,11 @@ func to_dict() -> Dictionary:
         "hp_left": hp_left,
         "merges_per_tier": merges_per_tier
     }
+
+func to_rich_text() -> String:
+    var out = "Score: " + str(score) + "\n"
+    out += "Slimes Dropped: " + str(slime_dropped) + "\n"
+    out += "Merges: " + str(total_merges) + "\n"
+    out += "HP Left: " + str(hp_left) + "\n"
+    out += "Merges Per Tier: " + str(merges_per_tier) + "\n"
+    return out

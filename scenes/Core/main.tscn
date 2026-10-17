@@ -26,6 +26,8 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_bwyuc"]
 font_size = 32
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ktxv1"]
+
 [node name="Main" type="Node2D" unique_id=1972363362]
 script = ExtResource("1_g00m7")
 
@@ -105,7 +107,54 @@ text = "0"
 label_settings = SubResource("LabelSettings_bwyuc")
 horizontal_alignment = 1
 
+[node name="GameOverPanel" type="Panel" parent="HUD" unique_id=1353287017]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HUD/GameOverPanel" unique_id=455452341]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="StatsRT" type="RichTextLabel" parent="HUD/GameOverPanel" unique_id=1226408828]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RestartButton" type="Button" parent="HUD/GameOverPanel" unique_id=757979684]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+
+[node name="MainMenuButton" type="Button" parent="HUD/GameOverPanel" unique_id=1675185923]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="MergeAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=825674580]
 max_polyphony = 4
 
 [node name="MergeParticles" parent="." unique_id=1156539273 instance=ExtResource("8_bwyuc")]
+
+[node name="KillPlane" type="Area2D" parent="." unique_id=438586096]
+
+[node name="KillPlaneCollisionShape2D" type="CollisionShape2D" parent="KillPlane" unique_id=511548330]
+position = Vector2(0, 717)
+shape = SubResource("WorldBoundaryShape2D_ktxv1")

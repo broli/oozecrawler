@@ -5,6 +5,8 @@ extends Node
 signal slime_merged(tier: int, score: int, location: Vector2)
 @warning_ignore("unused_signal")
 signal slime_dropped(tier: int)
+@warning_ignore("unused_signal")
+signal slime_fell_out_of_bounds(tier: int)
 
 #progression and dungeon events
 @warning_ignore("unused_signal")
@@ -19,3 +21,7 @@ signal achievement_earned(achievement_name: String)
 #scoring events
 @warning_ignore("unused_signal")
 signal score_milestone_reached(milestone_number: int)
+
+#endless mode particular signals
+@warning_ignore("unused_signal")
+signal game_over_endless_mode(level_stats: LevelStats)
