@@ -2,7 +2,7 @@ class_name QueueManager
 
 extends RefCounted
 
-#buffer a and b for queueing up the slimes
+#buffer a and b for queueing up the kernoj
 var _primary: Array[int]
 var _secondary: Array[int]
 

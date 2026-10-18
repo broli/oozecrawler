@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-class_name Slime
+class_name Kerno
 
 #tier handling
 @export var tier: int = 1
@@ -49,9 +49,6 @@ static func draw_visual(canvas: CanvasItem, center: Vector2, target_tier: int) -
 	canvas.draw_circle(eye_offset, radius * 0.2, Color(1, 1, 1, 0.9))
 	canvas.draw_circle(eye_offset, radius * 0.1, Color(0, 0, 0, 0.9))
 
-#func _draw() -> void:
-	#Slime.draw_visual(self, Vector2.ZERO, tier)
-	
 func _ready() -> void:
 	apply_tier_properties()
 	#rng jesus spins
@@ -66,12 +63,12 @@ func apply_tier_properties() -> void:
 	#handle for current tier data
 	var data: Dictionary = TIER_DATA[tier]
 	
-	Slime.setup_visual($ColorRect, tier, Vector2.ZERO)
+	Kerno.setup_visual($ColorRect, tier, Vector2.ZERO)
 		
 	# Update collision radius
 	var col_shape := $CollisionShape2D.shape as CircleShape2D
 	if col_shape:
-		# Duplicate shape so changing this slime doesn't alter other slimes
+		# Duplicate shape so changing this kerno doesn't alter other kernoj
 		col_shape = col_shape.duplicate()
 		col_shape.radius = data["radius"]
 		$CollisionShape2D.shape = col_shape
@@ -83,41 +80,38 @@ func apply_tier_properties() -> void:
 	queue_redraw()
 	
 func _on_body_entered(other_body: Node) -> void:
-	# Ignore non-slimes or already merging slimes
-	#if not other_body is Slime or is_merging or other_body.is_merging:
-	#	return
-	if other_body is not Slime:
+	if other_body is not Kerno:
 		return
 	
-	var other_slime := other_body as Slime
+	var other_kerno := other_body as Kerno
 	
-	if is_merging or other_slime.is_merging:
+	if is_merging or other_kerno.is_merging:
 		return
 	
 	# Only merge if tiers match and this isn't the max tier
-	if other_slime.tier != tier or tier >= TIER_DATA.size():
+	if other_kerno.tier != tier or tier >= TIER_DATA.size():
 		return
 	
-	# Arbitrate race condition: only one slime handles the merge
-	if get_instance_id() < other_slime.get_instance_id():
+	# Arbitrate race condition: only one kerno handles the merge
+	if get_instance_id() < other_kerno.get_instance_id():
 		return
 	
 	# Lock both bodies
 	is_merging = true
-	other_slime.is_merging = true
+	other_kerno.is_merging = true
 	
 	# Perform merge
-	call_deferred("_merge_with", other_slime)
+	call_deferred("_merge_with", other_kerno)
 	
-func _merge_with(other: Slime) -> void:
+func _merge_with(other: Kerno) -> void:
 	var next_tier := tier + 1
 	var spawn_pos := (global_position + other.global_position) / 2.0
 	
-	# Instantiate higher tier slime
-	var slime_scene: PackedScene = load(self.scene_file_path)
-	var new_slime: Slime = slime_scene.instantiate()
-	new_slime.tier = next_tier
-	new_slime.global_position = spawn_pos
+	# Instantiate higher tier kerno
+	var kerno_scene: PackedScene = load(self.scene_file_path)
+	var new_kerno: Kerno = kerno_scene.instantiate()
+	new_kerno.tier = next_tier
+	new_kerno.global_position = spawn_pos
 	var rng_pop := Vector2(
 		randf_range( # x random force.
 			xpop_intensity_min,
@@ -130,14 +124,14 @@ func _merge_with(other: Slime) -> void:
 		) # closing vector2
 	
 	#score and signaling merge
-	var score: int = TIER_DATA[new_slime.tier]["score"]
-	Events.slime_merged.emit(new_slime.tier, score, spawn_pos)
+	var score: int = TIER_DATA[new_kerno.tier]["score"]
+	Events.kerno_merged.emit(new_kerno.tier, score, spawn_pos)
 	
 	# Add to scene
-	get_parent().add_child(new_slime)
-	new_slime.apply_central_impulse(rng_pop)
+	get_parent().add_child(new_kerno)
+	new_kerno.apply_central_impulse(rng_pop)
 	
-	# Remove old slimes
+	# Remove old kernoj
 	other.queue_free()
 	queue_free()
 

@@ -2,7 +2,7 @@ class_name LevelStats
 extends RefCounted
 
 var score: int
-var slime_dropped: int
+var kerno_dropped: int
 var total_merges: int
 var hp_left: int
 var merges_per_tier: Dictionary
@@ -12,7 +12,7 @@ func _init():
 
 func reset():
     score = 0
-    slime_dropped = 0
+    kerno_dropped = 0
     total_merges = 0
     hp_left = 0
     merges_per_tier = {}
@@ -20,8 +20,8 @@ func reset():
 func add_score(amount: int):
     score += amount
 
-func add_slime_dropped():
-    slime_dropped += 1
+func add_kerno_dropped():
+    kerno_dropped += 1
 
 func add_merge(tier: int):
     total_merges += 1
@@ -35,7 +35,7 @@ func set_hp_left(amount: int):
 func to_dict() -> Dictionary:
     return {
         "score": score,
-        "slime_dropped": slime_dropped,
+        "kerno_dropped": kerno_dropped,
         "total_merges": total_merges,
         "hp_left": hp_left,
         "merges_per_tier": merges_per_tier
@@ -43,7 +43,7 @@ func to_dict() -> Dictionary:
 
 func to_rich_text() -> String:
     var out = "Score: " + str(score) + "\n"
-    out += "Slimes Dropped: " + str(slime_dropped) + "\n"
+    out += "Kernoj Dropped: " + str(kerno_dropped) + "\n"
     out += "Merges: " + str(total_merges) + "\n"
     out += "HP Left: " + str(hp_left) + "\n"
     out += "Merges Per Tier: " + str(merges_per_tier) + "\n"

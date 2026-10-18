@@ -1,7 +1,7 @@
 extends Node2D
 
 #Preloads ?
-const SLIME_SCENE = preload("res://scenes/slimes/slime.tscn")
+const KERNO_SCENE = preload("res://scenes/kerno/kerno.tscn")
 
 # Minimum and maximum X boundaries (inside the container walls)
 @export var min_x: float = 460.0
@@ -16,7 +16,7 @@ const SLIME_SCENE = preload("res://scenes/slimes/slime.tscn")
 
 #internal vars
 var can_drop: bool = true
-var current_slime_tier: int = 0
+var current_kerno_tier: int = 0
 
 func _process(_delta: float) -> void:
 	var mouse_x: float = get_global_mouse_position().x
@@ -31,25 +31,25 @@ func _draw() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		if can_drop:
-			drop_slime()
+			drop_kerno()
 			
-func drop_slime() -> void:
+func drop_kerno() -> void:
 	can_drop = false
 	
-	var slime = SLIME_SCENE.instantiate()
-	slime.tier = current_slime_tier
-	slime.global_position = global_position
+	var kerno = KERNO_SCENE.instantiate()
+	kerno.tier = current_kerno_tier
+	kerno.global_position = global_position
 	
-	get_parent().add_child(slime)
-	Events.slime_dropped.emit(current_slime_tier)
+	get_parent().add_child(kerno)
+	Events.kerno_dropped.emit(current_kerno_tier)
 	
 	await get_tree().create_timer(drop_cooldown).timeout
 	can_drop = true
 
-func set_current_slime_tier(new_tier: int) -> void:
-	current_slime_tier = new_tier
-	if not Slime.TIER_DATA.has(new_tier):
+func set_current_kerno_tier(new_tier: int) -> void:
+	current_kerno_tier = new_tier
+	if not Kerno.TIER_DATA.has(new_tier):
 		return
-	Slime.setup_visual($PreviewSlime, current_slime_tier, Vector2(0.0, 60.0))
+	Kerno.setup_visual($PreviewKerno, current_kerno_tier, Vector2(0.0, 60.0))
 	
 	queue_redraw()

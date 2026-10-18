@@ -1,12 +1,12 @@
 extends Node
 
-#slime events
+#kerno events
 @warning_ignore("unused_signal")
-signal slime_merged(tier: int, score: int, location: Vector2)
+signal kerno_merged(tier: int, score: int, location: Vector2)
 @warning_ignore("unused_signal")
-signal slime_dropped(tier: int)
+signal kerno_dropped(tier: int)
 @warning_ignore("unused_signal")
-signal slime_fell_out_of_bounds(tier: int)
+signal kerno_fell_out_of_bounds(tier: int)
 
 #progression and dungeon events
 @warning_ignore("unused_signal")

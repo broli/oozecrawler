@@ -46,17 +46,17 @@ func _ready() -> void:
 	queue_manager = QueueManager.new()
 	level_stats = LevelStats.new()
 		
-	# Give the dropper its first slime
-	dropper.set_current_slime_tier(self.queue_manager.get_next())
+	# Give the dropper its first kerno
+	dropper.set_current_kerno_tier(self.queue_manager.get_next())
 	queue_display.update_queue([queue_manager.peek(0), queue_manager.peek(1), queue_manager.peek(2), queue_manager.peek(3)] as Array[int])
 
 	#messaging and listening block
-	#listen for slime drop
-	Events.slime_dropped.connect(_on_slime_dropped)
+	#listen for kerno drop
+	Events.kerno_dropped.connect(_on_kerno_dropped)
 	#listen for kill plane collision
 	kill_plane.body_entered.connect(_on_kill_plane_body_entered)
 	#listen for merge event
-	Events.slime_merged.connect(_on_slime_merged)
+	Events.kerno_merged.connect(_on_kerno_merged)
 	#listen for game over
 	Events.game_over_endless_mode.connect(_on_game_over_endless_mode)
 	
@@ -65,7 +65,7 @@ func _ready() -> void:
 	game_over_main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 
 
-func _on_slime_merged(tier: int, earned_score: int, location: Vector2) -> void:
+func _on_kerno_merged(tier: int, earned_score: int, location: Vector2) -> void:
 	level_stats.add_score(earned_score)
 	level_stats.add_merge(tier)
 	score_value_label.text = str(level_stats.score)
@@ -86,9 +86,9 @@ func _on_slime_merged(tier: int, earned_score: int, location: Vector2) -> void:
 	add_child(merge_particles)
 
 	
-func _on_slime_dropped(_tier: int) -> void:
-	level_stats.add_slime_dropped()
-	dropper.set_current_slime_tier(self.queue_manager.get_next())
+func _on_kerno_dropped(_tier: int) -> void:
+	level_stats.add_kerno_dropped()
+	dropper.set_current_kerno_tier(self.queue_manager.get_next())
 	queue_display.update_queue([queue_manager.peek(0), queue_manager.peek(1), queue_manager.peek(2), queue_manager.peek(3)] as Array[int])
 
 
@@ -96,7 +96,7 @@ func _on_kill_plane_body_entered(body: Node) -> void:
 	if is_game_over:
 		return
 	is_game_over = true
-	Events.slime_fell_out_of_bounds.emit(body.tier)
+	Events.kerno_fell_out_of_bounds.emit(body.tier)
 	body.queue_free()
 	Events.game_over_endless_mode.emit(level_stats)
 

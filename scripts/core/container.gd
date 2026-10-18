@@ -18,7 +18,7 @@ func get_drop_bounds(margin: float) -> Vector2:
 	var inner_left := left_wall.global_position.x + (left_rect.size.x / 2.0)
 	var inner_right := right_wall.global_position.x - (right_rect.size.x / 2.0)
 	
-	# Add a margin so slimes don't spawn clipping inside the wall
+	# Add a margin so kernoj don't spawn clipping inside the wall
 	return Vector2(inner_left + margin, inner_right - margin)
 
 # Returns the Y coordinate of the top opening
