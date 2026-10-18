@@ -9,8 +9,8 @@ extends Node2D
 @onready var kill_plane: Area2D = $KillPlane
 @onready var game_over_panel: Panel = $HUD/GameOverPanel
 @onready var stats_rich_text: RichTextLabel = $HUD/GameOverPanel/StatsRT
-@onready var game_over_restart_button: Button = $HUD/GameOverPanel/RestartButton
-@onready var game_over_main_menu_button: Button = $HUD/GameOverPanel/MainMenuButton
+@onready var game_over_restart_button: Button = $HUD/GameOverPanel/HBoxContainer/RestartButton
+@onready var game_over_main_menu_button: Button = $HUD/GameOverPanel/HBoxContainer/MainMenuButton
 
 
 # Load audio files
@@ -23,6 +23,8 @@ var merge_particles_scene: PackedScene = preload("res://scenes/levels/merge_part
 
 var level_stats: LevelStats
 var queue_manager: QueueManager
+
+var is_game_over = false
 
 func _ready() -> void:
 	# Dynamically read beaker boundaries from its collision shapes
@@ -91,6 +93,9 @@ func _on_slime_dropped(_tier: int) -> void:
 
 
 func _on_kill_plane_body_entered(body: Node) -> void:
+	if is_game_over:
+		return
+	is_game_over = true
 	Events.slime_fell_out_of_bounds.emit(body.tier)
 	body.queue_free()
 	Events.game_over_endless_mode.emit(level_stats)
@@ -113,4 +118,4 @@ func _on_restart_button_pressed() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

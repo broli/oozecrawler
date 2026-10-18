@@ -7,7 +7,7 @@
 A self-contained, playable release combining the physics-merge core with a 5-node mini-roguelite run and endless mode.
 
 ### 1. Board Core & Loss Conditions
-- [ ] Bottom kill plane (cleans up overflowed slimes and triggers Game Over)
+- [x] Bottom kill plane (cleans up overflowed slimes and triggers Game Over)
 - [ ] Fail condition: Flask Overflow (Endless) or Player HP reaching 0 (Dungeon Run)
 - [ ] Study Reimplementing slime drops as a "cascading roll" system.
 
@@ -49,6 +49,7 @@ A self-contained, playable release combining the physics-merge core with a 5-nod
 - [ ] Title Screen with Mode Selection:
   - *Mini-Roguelite Run* (5-node dungeon crawl)
   - *Endless Mode* (Standard large beaker, high-score tracking)
+- [ ] UI Polish: Add styled borders to HUD panels (Game Over title & stats)
 - [ ] High-score persistence saved to `user://`
 - [ ] **Procedural Corridor Background Animation:**
   - Dynamic stepping motion (step forward, turn corners, and path bifurcations on node transitions)
@@ -58,10 +59,11 @@ A self-contained, playable release combining the physics-merge core with a 5-nod
   - Squash-and-stretch body deformation on slime collisions
   - Floating combat/damage numbers rising on merges
   - Screen shake linked to critical hits or heavy impacts
-- [ ] **Audio & SFX Polish:**
-  - Slime squish / landing audio
-  - Slime bounce audio
-  - Flask wall glass collision audio
+- [ ] **Audio & SFX Polish (Sound Juice):**
+  - Dropper release / slime drop sound
+  - Slimes hitting each other (squishy bounce collision audio)
+  - Slimes hitting the flask (glass wall impact audio)
+  - Slime landing / settling audio
 
 
 ---
