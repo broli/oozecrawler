@@ -1,6 +1,15 @@
-# Oozecrawler — Mechanics, Skills & Feature Ideas Backlog
+# Kerno Crawler — Mechanics, Skills & Feature Ideas Backlog
+*Yet Another Dungeon Crawler Story*
 
-This document collects gameplay ideas, class traits, utility skills, and procedural dungeon concepts for future implementation.
+This document collects gameplay ideas, lore foundations, class traits, utility skills, and procedural dungeon concepts.
+
+---
+
+## 0. Lore & World Foundation
+* **Kernoj (Singular: Kerno):** Indestructible planar anchors left behind when otherworldly dungeon beasts fall in combat. Their extreme surface tension prevents ordinary physical destruction and forces like-density cores to snap together upon contact.
+* **Planar Cohesion (Fusion):** When two identical Kernoj collide, their surface tension collapses them into a single larger, denser, higher-tier core, releasing a pulse of harvestable combat energy.
+* **Planar Containers:** Hero-specific rigs used to hold and compress Kernoj (Barbarian slag cage, Wizard arcane cylinder, Rogue collector canister).
+* **The Mentor:** An eccentric, irreverent researcher ("The Professor") studying the extra-planar invasion with pragmatic humor.
 
 ---
 

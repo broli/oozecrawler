@@ -1,12 +1,12 @@
 extends Control
 
 #referencs for controls
-@onready var endless_mode_button: Button = $VBoxContainer/EndlessModeButton
-@onready var dungeon_crawl_button: Button = $VBoxContainer/DungeonCrawlButton
-@onready var achievements_button: Button = $VBoxContainer/AchievementsButton
-@onready var journal_button: Button = $VBoxContainer/JournalButton
-@onready var settings_button: Button = $VBoxContainer/SettingsButton
-@onready var quit_button: Button = $VBoxContainer/QuitButton
+@onready var endless_mode_button: Button = $CenterContainer/VBoxContainer/EndlessButton
+@onready var dungeon_crawl_button: Button = $CenterContainer/VBoxContainer/DungeonButton
+@onready var achievements_button: Button = $CenterContainer/VBoxContainer/AchievementsButton
+@onready var journal_button: Button = $CenterContainer/VBoxContainer/JournalButton
+@onready var settings_button: Button = $CenterContainer/VBoxContainer/SettingsButton
+@onready var quit_button: Button = $CenterContainer/VBoxContainer/QuitButton
 
 func _ready() -> void:
 	endless_mode_button.pressed.connect(_on_endless_mode_button_pressed)
@@ -28,14 +28,14 @@ func _on_dungeon_crawl_button_pressed() -> void:
 func _on_achievements_button_pressed() -> void:
 	#TODO implement achivments in general. and then here go to the achivement viwer
 	pass
-    
+	
 func _on_journal_button_pressed() -> void:
 	#TODO implement journal in general. and then here go to the journal viewer
 	pass
-    
+	
 func _on_settings_button_pressed() -> void:
 	#TODO implement settings in general. and then here go to the settings viewer
 	pass
-    
+	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

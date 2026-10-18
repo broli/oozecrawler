@@ -1,18 +1,21 @@
-# Oozecrawler — Game Design Document (GDD)
+# Kerno Crawler — Game Design Document (GDD)
+*Yet Another Dungeon Crawler Story*
 
 ## 1. High Concept & Elevator Pitch
-**Oozecrawler** is a 2D fantasy physics-merge roguelite—a **"Suika Game meets Dungeon Crawler"**. Players drop bouncy, amorphous slimes into alchemical containers (vials, test tubes, flasks). When identical slimes collide, they merge into higher-tier oozes. In **Infinite Mode**, players aim for high scores while avoiding container overflow. In **Dungeon Crawl Mode**, merges trigger attacks against fantasy monsters in turn-based combat, with class skill trees (Barbarian, Wizard, Rogue) and cross-mode unlocks providing deep RPG progression.
+**Kerno Crawler** is a 2D fantasy physics-merge roguelite—a **"Suika Game meets Dungeon Crawler"**. Dungeons are alien, extra-planar structures invading the world. Defeated dungeon beasts dissolve, leaving behind indestructible foreign anchors called **Kernoj** (cores). 
+
+Adventurers carry customized planar containers (Barbarian iron cages, Wizard alchemical cylinders, Rogue collector rigs) into the dungeon. Under the laws of foreign physics, identical Kernoj share extreme surface tension: when brought into contact, they violently snap together (**Planar Cohesion / Fusion**) into larger, denser, and more radiant cores. In **Infinite Mode**, players practice high-score fusion runs. In **Dungeon Crawl Mode**, the energy released from these surface tension fusions is channeled into combat stances (Attack / Defend) to defeat dungeon monsters across 5-node procedural runs.
 
 ---
 
 ## 2. Core Pillars
-1. **Juicy Physical Merging:** Bouncy, squishy, semi-translucent slimes that deform, collide, and pop into larger tiers with satisfying audio-visual juice.
+1. **Resonant Physical Cohesion:** Indestructible, crystalline Kernoj that roll, clink, and snap together into larger radiant spheres via extreme foreign surface tension.
 2. **Dual-Mode Synergy:** 
-   - *Infinite Mode:* Chill, high-score driven sandbox & skill training.
-   - *Roguelite Crawl:* Tactical monster encounters where merges empower your attacks.
+   - *Infinite Mode:* High-score driven training and sandbox fusion.
+   - *Roguelite Crawl:* Tactical turn-based combat powered by fusion energy banks.
    - Cross-mode rewards keep both modes relevant.
-3. **Class Identity & Skill Trees:** Distinct playstyles (forceful throws, arcane slime magnets, slippery infiltrators) with branching passive unlocks.
-4. **Lighthearted Fantasy Tone:** Humorous, pun-filled dialogue and quirky monster reactions.
+3. **Class Identity & Planar Rigs:** Distinct playstyles (kinetic force throws, arcane harmonic magnets, precision compression drops) with unique class containers.
+4. **Wry Anime/Fantasy Tone:** An eccentric mentor (the "Professor") providing comedic, pragmatic commentary on the absurdity of the extra-planar dungeon invasion.
 
 ---
 

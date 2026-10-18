@@ -9,6 +9,7 @@ A self-contained, playable release combining the physics-merge core with a 5-nod
 ### 1. Board Core & Loss Conditions
 - [x] Bottom kill plane (cleans up overflowed slimes and triggers Game Over)
 - [ ] Fail condition: Flask Overflow (Endless) or Player HP reaching 0 (Dungeon Run)
+- [ ] Tier Evolution HUD Chart (visual progression guide showing which tier merges into what)
 - [ ] Study Reimplementing slime drops as a "cascading roll" system.
 
 ### 2. Turn Engine & Combat Bridge

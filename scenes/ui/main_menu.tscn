@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://t7ir5j160j08"]
 
+[ext_resource type="Script" uid="uid://bhkdfrtd5wl53" path="res://scripts/scenes/ui/main_menu.gd" id="1_sl1te"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_ktxv1"]
 font_size = 64
 font_color = Color(0.22091639, 0.9371796, 0.5952235, 1)
@@ -11,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sl1te")
 
 [node name="Background" type="ColorRect" parent="." unique_id=595154708]
 layout_mode = 1
@@ -51,12 +54,12 @@ layout_mode = 2
 disabled = true
 text = "Dungeon Crawl"
 
-[node name="AchivementsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=145420223]
+[node name="AchievementsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=145420223]
 layout_mode = 2
 disabled = true
 text = "Achivements"
 
-[node name="Journal" type="Button" parent="CenterContainer/VBoxContainer" unique_id=876462283]
+[node name="JournalButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=876462283]
 layout_mode = 2
 disabled = true
 text = "Journal"
