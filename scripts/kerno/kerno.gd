@@ -19,17 +19,17 @@ var is_merging := false
 @export var angular_velocity_max := 2.0
 
 const TIER_DATA: Dictionary = {
-	1: {"radius": 16.0, "color": Color(0.4, 0.9, 0.3, 0.85), "score": 10, "mass": 1.0},
-	2: {"radius": 22.0, "color": Color(0.2, 0.8, 0.9, 0.85), "score": 20, "mass": 1.8},
-	3: {"radius": 28.0, "color": Color(0.95, 0.85, 0.2, 0.85), "score": 40, "mass": 2.8},
-	4: {"radius": 36.0, "color": Color(0.95, 0.5, 0.1, 0.85), "score": 80, "mass": 4.2},
-	5: {"radius": 46.0, "color": Color(0.85, 0.2, 0.6, 0.85), "score": 160, "mass": 6.0},
-	6: {"radius": 58.0, "color": Color(0.6, 0.2, 0.85, 0.85), "score": 320, "mass": 8.5},
-	7: {"radius": 72.0, "color": Color(0.85, 0.15, 0.2, 0.85), "score": 640, "mass": 11.5},
-	8: {"radius": 88.0, "color": Color(0.25, 0.25, 0.3, 0.85), "score": 1280, "mass": 15.0},
-	9: {"radius": 102.0, "color": Color(0.1, 0.3, 0.85, 0.85), "score": 2560, "mass": 19.5},
-	10: {"radius": 116.0, "color": Color(0.1, 0.75, 0.5, 0.85), "score": 5120, "mass": 25.0},
-	11: {"radius": 130.0, "color": Color(1.0, 0.84, 0.0, 0.9), "score": 10240, "mass": 32.0},
+	1: {"radius": 16.0, "color": Color("#7e9296"), "score": 10, "mass": 1.0}, # Faint Ghost Slate (0 wisps)
+	2: {"radius": 22.0, "color": Color("#48cae4"), "score": 20, "mass": 1.8}, # Spirit Teal (1 wisp)
+	3: {"radius": 28.0, "color": Color("#00b4d8"), "score": 40, "mass": 2.8}, # Luminous Cyan (2 wisps)
+	4: {"radius": 36.0, "color": Color("#0077b6"), "score": 80, "mass": 4.2}, # Astral Blue (3 wisps)
+	5: {"radius": 46.0, "color": Color("#7b2cbf"), "score": 160, "mass": 6.0}, # Arcane Lavender (4 wisps)
+	6: {"radius": 58.0, "color": Color("#9d4edd"), "score": 320, "mass": 8.5}, # Royal Amethyst (5 wisps)
+	7: {"radius": 72.0, "color": Color("#f72585"), "score": 640, "mass": 11.5}, # Void Magenta (6 wisps)
+	8: {"radius": 88.0, "color": Color("#e63946"), "score": 1280, "mass": 15.0}, # Bloodstone Crimson (7 wisps)
+	9: {"radius": 102.0, "color": Color("#f77f00"), "score": 2560, "mass": 19.5}, # Solar Amber (8 wisps)
+	10: {"radius": 116.0, "color": Color("#fcbf49"), "score": 5120, "mass": 25.0}, # Supernal Citrine (9 wisps)
+	11: {"radius": 130.0, "color": Color("#fff9db"), "score": 10240, "mass": 32.0}, # Astral Singularity (10 wisps)
 }
 
 # Static drawing helper callable from outside. not instance related, but class static
@@ -152,3 +152,5 @@ static func setup_visual(rect: ColorRect, target_tier: int, center: Vector2 = Ve
 		mat = mat.duplicate() # Creates a private copy for THIS specific rect
 		rect.material = mat
 		mat.set_shader_parameter("base_color", TIER_DATA[target_tier]["color"])
+		mat.set_shader_parameter("tier", target_tier)
+		mat.set_shader_parameter("core_radius", radius)

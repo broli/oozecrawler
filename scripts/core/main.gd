@@ -36,7 +36,7 @@ func _ready() -> void:
 	dropper.global_position.y = container.get_opening_y() - 150.0
 	
 	# put att he bottom
-	kill_plane.global_position.y = get_viewport_rect().size.y + 260
+	kill_plane.global_position.y = get_viewport_rect().size.y + 100
 	
 	# hide game over panel
 	game_over_panel.visible = false

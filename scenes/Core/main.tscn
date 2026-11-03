@@ -15,10 +15,14 @@ font_size = 32
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ddvu7"]
 shader = ExtResource("6_fojeq")
 shader_parameter/base_color = Color(0.3, 0.85, 0.3, 1)
+shader_parameter/tier = 1
+shader_parameter/core_radius = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fojeq"]
 shader = ExtResource("6_fojeq")
 shader_parameter/base_color = Color(0.3, 0.85, 0.3, 1)
+shader_parameter/tier = 1
+shader_parameter/core_radius = 20.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_fojeq"]
 font_size = 32
@@ -72,7 +76,6 @@ texture = ExtResource("1_ue2wo")
 centered = false
 
 [node name="DungeonBackground" parent="." unique_id=1480490908 instance=ExtResource("3_5uyvx")]
-self_modulate = Color(0.7137255, 0.7137255, 0.7137255, 0.6392157)
 
 [node name="Container" parent="." unique_id=303102109 instance=ExtResource("1_x0yl7")]
 position = Vector2(-200, 40)
@@ -212,5 +215,4 @@ max_polyphony = 4
 [node name="KillPlane" type="Area2D" parent="." unique_id=438586096]
 
 [node name="KillPlaneCollisionShape2D" type="CollisionShape2D" parent="KillPlane" unique_id=511548330]
-position = Vector2(0, 717)
 shape = SubResource("WorldBoundaryShape2D_ktxv1")

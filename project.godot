@@ -23,7 +23,9 @@ Events="*uid://5mnfqnlh42nj"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [gui]
 
@@ -38,3 +40,4 @@ theme/custom="uid://bixou5lbr8m2v"
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.2738726, 0.2738728, 0.2738727, 1)
